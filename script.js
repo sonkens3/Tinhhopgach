@@ -20,7 +20,7 @@ function showResult(data) {
   resultBox.classList.remove("error");
   resultBox.innerHTML = `
     <h2>Kết quả tính toán</h2>
-    <p><strong>Diện tích khu vực cần lát:</strong> ${data.area.toFixed(2)} m²</p>
+    <p><strong>Diện tích cần lát:</strong> ${data.area.toFixed(2)} m²</p>
     <p><strong>Diện tích sau khi cộng hao hụt:</strong> ${data.areaWithWastage.toFixed(2)} m²</p>
     <p><strong>Diện tích 1 viên gạch:</strong> ${data.tileArea.toFixed(4)} m²</p>
     <p><strong>Diện tích 1 hộp gạch:</strong> ${data.boxArea.toFixed(4)} m²</p>
@@ -31,16 +31,14 @@ function showResult(data) {
 }
 
 function calculateBoxes() {
-  const areaLength = getValue("areaLength");
-  const areaWidth = getValue("areaWidth");
+  const area = getValue("area");
   const tileLength = getValue("tileLength");
   const tileWidth = getValue("tileWidth");
   const tilesPerBox = getValue("tilesPerBox");
   const wastage = getValue("wastage") || 0;
 
   if (
-    isNaN(areaLength) ||
-    isNaN(areaWidth) ||
+    isNaN(area) ||
     isNaN(tileLength) ||
     isNaN(tileWidth) ||
     isNaN(tilesPerBox)
@@ -50,8 +48,7 @@ function calculateBoxes() {
   }
 
   if (
-    areaLength <= 0 ||
-    areaWidth <= 0 ||
+    area <= 0 ||
     tileLength <= 0 ||
     tileWidth <= 0 ||
     tilesPerBox <= 0
@@ -65,7 +62,6 @@ function calculateBoxes() {
     return;
   }
 
-  const area = areaLength * areaWidth;
   const tileArea = tileLength * tileWidth;
   const boxArea = tileArea * tilesPerBox;
   const areaWithWastage = area * (1 + wastage / 100);
@@ -85,8 +81,7 @@ function calculateBoxes() {
 }
 
 function resetForm() {
-  document.getElementById("areaLength").value = "";
-  document.getElementById("areaWidth").value = "";
+  document.getElementById("area").value = "";
   document.getElementById("tileLength").value = "";
   document.getElementById("tileWidth").value = "";
   document.getElementById("tilesPerBox").value = "";
