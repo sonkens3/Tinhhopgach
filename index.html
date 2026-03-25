@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tính số hộp gạch cần dùng</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>Tính số hộp gạch cần dùng</h1>
+      <p class="subtitle">
+        Nhập diện tích cần lát và thông tin gạch để tính số hộp cần mua
+      </p>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="areaLength">Chiều dài khu vực (m)</label>
+          <input type="number" id="areaLength" step="0.01" placeholder="Ví dụ: 5" />
+        </div>
+
+        <div class="form-group">
+          <label for="areaWidth">Chiều rộng khu vực (m)</label>
+          <input type="number" id="areaWidth" step="0.01" placeholder="Ví dụ: 4" />
+        </div>
+
+        <div class="form-group">
+          <label for="tileLength">Chiều dài 1 viên gạch (m)</label>
+          <input type="number" id="tileLength" step="0.001" placeholder="Ví dụ: 0.6" />
+        </div>
+
+        <div class="form-group">
+          <label for="tileWidth">Chiều rộng 1 viên gạch (m)</label>
+          <input type="number" id="tileWidth" step="0.001" placeholder="Ví dụ: 0.6" />
+        </div>
+
+        <div class="form-group">
+          <label for="tilesPerBox">Số viên mỗi hộp</label>
+          <input type="number" id="tilesPerBox" step="1" placeholder="Ví dụ: 4" />
+        </div>
+
+        <div class="form-group">
+          <label for="wastage">Hao hụt (%)</label>
+          <input type="number" id="wastage" step="1" value="5" placeholder="Ví dụ: 5" />
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button id="calcBtn" class="btn primary">Tính số hộp cần mua</button>
+        <button id="resetBtn" class="btn secondary" type="button">Xóa dữ liệu</button>
+      </div>
+
+      <div id="result" class="result hidden"></div>
+
+      <div class="note">
+        Gợi ý: nên cộng hao hụt khoảng 5% đến 10% để tránh thiếu gạch khi cắt ghép.
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
