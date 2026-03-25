@@ -1,27 +1,24 @@
-const calcBtn = document.getElementById("calcBtn");
-const resetBtn = document.getElementById("resetBtn");
-const resultBox = document.getElementById("result");
-
-calcBtn.addEventListener("click", calculateBoxes);
-resetBtn.addEventListener("click", resetForm);
-
 function getValue(id) {
-  return parseFloat(document.getElementById(id).value);
+  const el = document.getElementById(id);
+  return parseFloat(el.value);
 }
 
 function showError(message) {
+  const resultBox = document.getElementById("result");
   resultBox.classList.remove("hidden");
   resultBox.classList.add("error");
-  resultBox.innerHTML = `<strong>${message}</strong>`;
+  resultBox.innerHTML = "<strong>" + message + "</strong>";
 }
 
 function showResult(data) {
+  const resultBox = document.getElementById("result");
   resultBox.classList.remove("hidden");
   resultBox.classList.remove("error");
+
   resultBox.innerHTML = `
     <h2>Kết quả tính toán</h2>
     <p><strong>Diện tích cần lát:</strong> ${data.area.toFixed(2)} m²</p>
-    <p><strong>Diện tích sau khi cộng hao hụt:</strong> ${data.areaWithWastage.toFixed(2)} m²</p>
+    <p><strong>Diện tích sau hao hụt:</strong> ${data.areaWithWastage.toFixed(2)} m²</p>
     <p><strong>Diện tích 1 viên gạch:</strong> ${data.tileArea.toFixed(4)} m²</p>
     <p><strong>Diện tích 1 hộp gạch:</strong> ${data.boxArea.toFixed(4)} m²</p>
     <p><strong>Số viên gạch ước tính cần dùng:</strong> ${data.totalTiles} viên</p>
@@ -47,12 +44,7 @@ function calculateBoxes() {
     return;
   }
 
-  if (
-    area <= 0 ||
-    tileLength <= 0 ||
-    tileWidth <= 0 ||
-    tilesPerBox <= 0
-  ) {
+  if (area <= 0 || tileLength <= 0 || tileWidth <= 0 || tilesPerBox <= 0) {
     showError("Tất cả giá trị phải lớn hơn 0.");
     return;
   }
@@ -70,13 +62,13 @@ function calculateBoxes() {
   const totalTiles = Math.ceil(areaWithWastage / tileArea);
 
   showResult({
-    area,
-    tileArea,
-    boxArea,
-    areaWithWastage,
-    exactBoxes,
-    boxesToBuy,
-    totalTiles
+    area: area,
+    tileArea: tileArea,
+    boxArea: boxArea,
+    areaWithWastage: areaWithWastage,
+    exactBoxes: exactBoxes,
+    boxesToBuy: boxesToBuy,
+    totalTiles: totalTiles
   });
 }
 
@@ -87,6 +79,7 @@ function resetForm() {
   document.getElementById("tilesPerBox").value = "";
   document.getElementById("wastage").value = "5";
 
+  const resultBox = document.getElementById("result");
   resultBox.classList.add("hidden");
   resultBox.classList.remove("error");
   resultBox.innerHTML = "";
