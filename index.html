@@ -11,18 +11,13 @@
     <div class="card">
       <h1>Tính số hộp gạch cần dùng</h1>
       <p class="subtitle">
-        Nhập diện tích cần lát và thông tin gạch để tính số hộp cần mua
+        Nhập diện tích cần lát sẵn theo m² và thông tin gạch để tính số hộp cần mua
       </p>
 
       <div class="form-grid">
         <div class="form-group">
-          <label for="areaLength">Chiều dài khu vực (m)</label>
-          <input type="number" id="areaLength" step="0.01" placeholder="Ví dụ: 5" />
-        </div>
-
-        <div class="form-group">
-          <label for="areaWidth">Chiều rộng khu vực (m)</label>
-          <input type="number" id="areaWidth" step="0.01" placeholder="Ví dụ: 4" />
+          <label for="area">Diện tích cần lát (m²)</label>
+          <input type="number" id="area" step="0.01" placeholder="Ví dụ: 25" />
         </div>
 
         <div class="form-group">
@@ -54,7 +49,7 @@
       <div id="result" class="result hidden"></div>
 
       <div class="note">
-        Gợi ý: nên cộng hao hụt khoảng 5% đến 10% để tránh thiếu gạch khi cắt ghép.
+        Gợi ý: nếu lát chéo hoặc cắt ghép nhiều, nên để hao hụt 7% đến 10%.
       </div>
     </div>
   </div>
