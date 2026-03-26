@@ -1,12 +1,12 @@
-// Assuming boxPrice is a reference to an input field
-function formatCurrency() {
-    const input = document.getElementById('boxPrice');
-    input.addEventListener('input', function() {
-        let value = parseFloat(this.value.replace(/[^0-9.-]+/g, ''));
-        if (!isNaN(value)) {
-            this.value = value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        }
-    });
-}
+// Original tile category functions
+function originalFunction1() { /* original code */ }
+function originalFunction2() { /* original code */ }
 
-formatCurrency();
+// Real-time currency formatting for boxPrice
+const boxPriceInput = document.getElementById('boxPrice');
+
+boxPriceInput.addEventListener('input', function() {
+    let value = this.value.replace(/[^\d]/g, ''); // Remove non-digit characters
+    value = (value / 1000).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    this.value = value;
+});
